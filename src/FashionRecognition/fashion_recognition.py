@@ -1,8 +1,8 @@
-from tensorflow.python.keras.datasets import fashion_mnist # модель для работы с надором данных
-from tensorflow.python.keras.models import Sequential # модель для представления нейронной сети, в которой нейроны
+from tensorflow.python.keras.datasets import fashion_mnist  # модель для работы с надором данных
+from tensorflow.python.keras.models import Sequential  # модель для представления нейронной сети, в которой нейроны
 # идут последовательно
-from tensorflow.python.keras.layers import Dense # тип слоя полносвязной нейронной сети
-from tensorflow.python.keras import utils # для приведения данных в необходимый формат в для keras
+from tensorflow.python.keras.layers import Dense  # тип слоя полносвязной нейронной сети
+from tensorflow.python.keras import utils  # для приведения данных в необходимый формат в для keras
 import numpy as np
 
 # Загружаем данные
@@ -46,6 +46,9 @@ model.compile(loss="categorical_crossentropy", optimizer="SGD", metrics=["accura
 # Обучаем сеть (batch_size - размер минивыборки(важно для градиента), epochs - сколько эпох для
 # одного и того же набора изображений, verbose - печатаем прогресс нейронной сети)
 model.fit(x_train, y_train, batch_size=200, epochs=100, verbose=1)
+
+# сохранение сети
+model.save('fashion_mnist_dense.h5')
 
 # Оцениваем качество сети на тестовых данных
 score = model.evaluate(x_test, y_test, verbose=1)
